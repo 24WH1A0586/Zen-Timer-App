@@ -13,8 +13,8 @@ public class ZenTimerApp extends JFrame {
     private GamePanel gamePanel;
 
    
-    private final int WORK_TIME_MINUTES = 1;
-    private final int BREAK_TIME_SECONDS = 1 * 60; 
+    private final int WORK_TIME_MINUTES = 25;
+    private final int BREAK_TIME_SECONDS = 5 * 60; 
     
     public ZenTimerApp() {
         setTitle("Zen Focus Timer");

@@ -37,7 +37,6 @@ public class GamePanel extends JPanel {
         this.parentFrame = frame;
         setLayout(new BorderLayout());
 
-        // ---------------- TOP INFO PANEL ----------------
         JPanel infoPanel = new JPanel(new GridLayout(1, 2));
         scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
         gameTimerLabel = new JLabel("Time Left: --:--", SwingConstants.CENTER);
@@ -45,17 +44,17 @@ public class GamePanel extends JPanel {
         infoPanel.add(gameTimerLabel);
         add(infoPanel, BorderLayout.NORTH);
 
-        // ---------------- GAME AREA ----------------
+        
         gameArea = new GameAreaPanel();
         gameArea.setPreferredSize(new Dimension(300, 200));
         add(gameArea, BorderLayout.CENTER);
 
-        // ---------------- EXIT BUTTON ----------------
+        
         JButton returnButton = new JButton("End Break & Return to Work");
         returnButton.addActionListener(e -> stopGame());
         add(returnButton, BorderLayout.SOUTH);
 
-        // ---------------- MOUSE LISTENER ----------------
+        
         gameArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -64,9 +63,7 @@ public class GamePanel extends JPanel {
         });
     }
 
-    // ==========================================================
-    //                      GAME AREA PANEL
-    // ==========================================================
+   
 
     private class GameAreaPanel extends JPanel {
         @Override
@@ -98,10 +95,7 @@ public class GamePanel extends JPanel {
         }
     }
 
-    // ==========================================================
-    //                 SOUND: POP ON HIT
-    // ==========================================================
-
+   
     private void playPopSound() {
         try {
             File soundFile = new File("pop.wav");
@@ -116,10 +110,7 @@ public class GamePanel extends JPanel {
         }
     }
 
-    // ==========================================================
-    //                  HIT DETECTION (FIXED)
-    // ==========================================================
-
+    
     private void checkHit(int clickX, int clickY) {
 
         if (activeMoleIndex == -1) return;
@@ -141,16 +132,14 @@ public class GamePanel extends JPanel {
                 clickY >= moleY && clickY <= moleY + MOLE_SIZE;
 
         if (hit) {
-            playPopSound();  // 🔊 sound effect
+            playPopSound();  
             score++;
             scoreLabel.setText("Score: " + score);
             popNewMole();
         }
     }
 
-    // ==========================================================
-    //                      GAME LOGIC
-    // ==========================================================
+   
 
     private void startMoleTimer() {
         molePopTimer = new Timer(1500, e -> popNewMole());
